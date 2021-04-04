@@ -2619,6 +2619,9 @@ button:disabled,
   opacity: 0.25;
 }
 
+.after-how-it-works-button {
+  margin-top: 0px;
+}
 @media screen and (max-width: 736px) {
   input[type="submit"],
   input[type="reset"],
@@ -3515,6 +3518,11 @@ button:disabled,
 @media screen and (max-width: 736px) {
   #menu {
     padding: 3em 1.5em;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .phones {
+    width: 100% !important;
   }
 }
 
