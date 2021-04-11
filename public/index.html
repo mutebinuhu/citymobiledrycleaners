@@ -51,7 +51,7 @@
 							Lets Pick your Dirty Laundry From Where You Are<br />
 							And Drop It Clean ASAP <br><span><em>At a cheaper price</em></span></h3>
 							<ul class="actions special">
-								<li><a href="#" class="button primary" id="myBtn">Request Now</a></li>
+								<li><a href="#" class="button primary request-button">Request Now</a></li>
 								<li><a href="tel:0789567701" class="button fit">call now</a></li>
 
 							</ul>
@@ -69,13 +69,12 @@
 									We offer unique services to wide spectrum of businesses and customers<br>by providing excellent services that meet the specifications of our clients.
 								</p>
 								<ul class="actions special">
-									<li><a href="#" class="button primary">Request Now</a></li>
+									<li><a href="#" class="button primary request-button">Request Now</a></li>
 								    <li><a href="tel:0789567701" class="button fit">call now</a></li>
 
 								</ul>
 									<h3>
 										This is how it works
-
 									</h3>
 							</header>
 							<ul class="icons major">
@@ -90,7 +89,7 @@
 						</div>
 						<section class="mt-5 after-how-it-works-button">
 							<ul class="actions special">
-								<li><a href="#" class="button primary">Request Now</a></li>
+								<li><a href="#" class="button primary request-button">Request Now</a></li>
 								<li><a href="tel:0789567701" class="button fit">call now</a></li>
 
 							</ul>
@@ -106,7 +105,7 @@
 									So all your laundry is washed, dried and neatly folded.
 									You receive them fresh and clean..</p>
 									<ul class="actions special">
-										<li><a href="#" class="button primary">Request Now</a></li>
+										<li><a href="#" class="button primary request-button">Request Now</a></li>
 										<li><a href="tel:0789567701" class="button fit">call now</a></li>
 
 									</ul>
@@ -219,17 +218,24 @@
 
 				<!-- The Modal -->
 				<div id="myModal" class="modal">
-
 				<!-- Modal content -->
 				<div class="modal-content">
 					<span class="close">&times;</span>
-					<p>Some text in the Modal..</p>
+					<div class="container"  style="background-color:rgba(43,52,61, 0.9)">
+						<form action="" method="POST">
+							<label for="Phone number">Phone Number</label>
+							<input type="text" name="phone number" placeholder="Phone Number">
+							<label for="message">Optional Message</label>
+							<textarea name="" id="" cols="15" rows="5"></textarea>
+							<br>
+							<button type="submit" class="button button-primary" value="submit">Submit</button>
+						</form>
+					</div>
 				</div>
 
 				</div>
 			</section>
-			<!--request modal-->
-
+			
 		
 
 		<!-- Scripts -->
@@ -250,13 +256,18 @@
 				// Get the modal
 				let modal = document.getElementById("myModal");
 				// Get the button that opens the modal
-				let btn = document.getElementById("myBtn");
+				let btn = document.getElementsByClassName('request-button');
+				//loop through all request-buttons
+				for(let i = 0; i < btn.length; i++){
+					btn[i].addEventListener("click", ()=>{
+						//display modal to make a request
+						modal.style.display = "block";
+					})
+				}				
+				
 				// Get the <span> element that closes the modal
 				var span = document.getElementsByClassName("close")[0];
-				btn.onclick = () =>{
-					modal.style.display = "block";
 
-				}
 				// When the user clicks on <span> (x), close the modal
 				span.onclick = function() {
 				modal.style.display = "none";
@@ -268,6 +279,16 @@
 					modal.style.display = "none";
 				}
 				}
+				/*var elems = document.getElementsByClassName('list');
+
+				console.log(elems);
+				let listLength = elems.length;
+				for(let i = 0; i < listLength; i++){
+					elems[i].addEventListener('click', ()=>{
+						alert()
+					})
+				}
+			*/	
 			</script>
 
 	</body>
