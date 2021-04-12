@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
-
+const dbConnection = require('./config/db/connection');
+dbConnection();
 const path = require('path')
 const app = express();
 app.use(express.json({extended: false}));
