@@ -56,14 +56,18 @@
             {{#if errorsList}}
             <div class="errors">
 
-                <p>Errors</p>
+                <p>Request unsuccessfull</p>
                 <ul>
                     {{#each errorsList}}
                     <li>{{this.msg}}</li>
                     {{/each}}
                 </ul>
             </div>
-
+            {{/if}}
+            {{#if successMessage.success}}
+            <div class="succes">
+                <p>Request unsuccessfull</p>
+            </div>
             {{/if}}
         </section>
         <!-- Errors-->
@@ -334,11 +338,7 @@ alert()
         //remove errors after some time
         //get errors div
         let errorsDiv = document.querySelector('.errors');
-        console.log(errorsDiv)
-        setTimeout(() => {
-            errorsDiv.style.display = "none"
 
-        }, 4000)
     </script>
 
 </body>

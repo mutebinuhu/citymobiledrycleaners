@@ -32,8 +32,12 @@ Router.post('/',[
        message
    });
    request.save();
-   res.render('index')
-
+   //success message
+   let successMessage = {
+       success: true,
+       message: "Request Sent" 
+   }
+   res.render('index', {successMessage})
 
 });
 

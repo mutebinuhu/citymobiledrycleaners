@@ -4223,3 +4223,15 @@ label {
     margin-top: 0;
   }
 }
+/* errors */
+.errors > ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.errors > ul > li {
+  background-color: #ed4933;
+  margin: 5px;
+  border-radius: 3px;
+  text-align: center;
+}
