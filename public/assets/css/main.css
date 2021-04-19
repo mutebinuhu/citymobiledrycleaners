@@ -4235,3 +4235,14 @@ label {
   border-radius: 3px;
   text-align: center;
 }
+.errors > p {
+  text-align: center;
+}
+.success {
+  text-align: center;
+  height: 50px;
+  background: #28a745;
+}
+.success > p {
+  padding-top: 15px;
+}

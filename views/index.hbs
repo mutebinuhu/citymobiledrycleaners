@@ -56,7 +56,7 @@
             {{#if errorsList}}
             <div class="errors">
 
-                <p>Request unsuccessfull</p>
+                <p>Request Not Sent</p>
                 <ul>
                     {{#each errorsList}}
                     <li>{{this.msg}}</li>
@@ -65,8 +65,8 @@
             </div>
             {{/if}}
             {{#if successMessage.success}}
-            <div class="succes">
-                <p>Request unsuccessfull</p>
+            <div class="success">
+                <p>Request Sent</p>
             </div>
             {{/if}}
         </section>
