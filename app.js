@@ -10,7 +10,7 @@ app.use(express.json({extended: false}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
-const requestRoute = require('./Routes/api/sendrequest')
+const requestRoute = require('./Routes/Requests')
 
 app.get('/demo', (req, res)=>{
     let demo = {
