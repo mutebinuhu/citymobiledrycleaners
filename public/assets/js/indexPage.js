@@ -49,7 +49,7 @@ try {
         errorsDiv.style.display = 'none'
     },5000)
 } catch (error) {
-    console.log(error.message)
+    console.error(error)
 }
 
 //close the success alert message
