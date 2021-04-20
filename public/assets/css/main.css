@@ -4237,6 +4237,9 @@ label {
 }
 .errors > p {
   text-align: center;
+  padding-top: 15px;
+  background: #ed4933;
+  height: 50px;
 }
 .success {
   text-align: center;
