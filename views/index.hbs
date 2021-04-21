@@ -42,220 +42,222 @@
                             <ul>
                                 <li><a href="/">Home</a></li>
                                 <li><a href="#contactus">Contact Us</a></li>
-                                <li><a href="#">Sign Up</a></li>
-                                <li><a href="#">Log In</a></li>
-                            </ul>
-                        </div>
+                                <li><a href="/signup">Sign Up</a>
+                                <li><a href="/login">Log In</a></li>
+
                     </li>
                 </ul>
-            </nav>
-        </header>
-        <!-- Errors -->
-        <section>
+    </div>
+    </li>
+    </ul>
+    </nav>
+    </header>
+    <!-- Errors -->
+    <section>
 
-            {{#if errorsList}}
-            <div class="errors">
-                <p>Request Not Sent</p>
-                <ul>
-                    {{#each errorsList}}
-                    <li>{{this.msg}}</li>
-                    {{/each}}
-                </ul>
-            </div>
-            {{/if}}
-            {{#if successMessage.success}}
-            <div class="success">
-                <p>Request Sent</p>
-            </div>
-            {{/if}}
-        </section>
-        <!-- Errors-->
-
-        <!-- Banner -->
-        <section id="banner">
-            <div class="inner">
-                <h2>CITY MOBILE DRY CLEANERS</h2>
-                <h3 style="text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
-							0px -4px 10px rgba(255,255,255,0.3)">A Mobile Wet and Dry cleaner In Town<br />
-                    Lets Pick your Dirty Laundry From Where You Are<br />
-                    And Drop It Clean ASAP <br><span><em>At a cheaper price</em></span></h3>
-                <ul class="actions special">
-                    <li><a href="#" class="button primary request-button">Request Now</a></li>
-                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                </ul>
-            </div>
-            <a href="#one" class="more scrolly">Learn More</a>
-        </section>
-
-        <!-- One -->
-        <section id="one" class="wrapper style1 special">
-
-
-            <div class="inner">
-                <header class="major">
-                    <h2>Step into the world of Mobile Wet and Dry cleaning</h2>
-                    <p>We clean <strong>Every thing</strong> from <strong>Suits</strong> to <strong>Carpets</strong></p>
-                    <p>
-                        We offer unique services to wide spectrum of businesses and customers<br>by providing excellent
-                        services that meet the specifications of our clients.
-                    </p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button primary request-button">Request Now</a></li>
-                        <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                    </ul>
-                    <h3>
-                        This is how it works
-                    </h3>
-                </header>
-                <ul class="icons major">
-                    <li><span class="icon fa-gem major style1"><span class="label">Lorem</span></span>
-                        <p>Request PickUp Online</p>
-                    </li>
-                    <li><span class="icon fa-heart major style2"><span class="label">Ipsum</span></span>
-                        <p>We Pick Up ASAP</p>
-                    </li>
-                    <li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span>
-                        <P>We Clean It</P>
-                    </li>
-                    <li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span>
-                        <P>We Drop Off</P>
-                    </li>
-
-                </ul>
-
-
-            </div>
-            <section class="mt-5 after-how-it-works-button">
-                <ul class="actions special">
-                    <li><a href="#" class="button primary request-button">Request Now</a></li>
-                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                </ul>
-            </section>
-        </section>
-
-        <!-- Two -->
-        <section id="two" class="wrapper alt style2" style="text-align: center;">
-            <section class="spotlight">
-                <div class="image"><img src="images/pic01.jpg" alt="" /></div>
-                <div class="content">
-                    <h2>Wet Cleaning</h2>
-                    <p>We geared to maintaining and enhancing your fabric in the best tradition,
-                        So all your laundry is washed, dried and neatly folded.
-                        You receive them fresh and clean..</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button primary request-button">Request Now</a></li>
-                        <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                    </ul>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="images/pic02.jpg" alt="" /></div>
-                <div class="content">
-                    <h2>Bulky Cleaning</h2>
-                    <p>Request Online and we pick your bag of clothes, You will receive it clean at incredibly cheaper
-                        Rates</p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button primary request-button">Request Now</a></li>
-                        <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                    </ul>
-                </div>
-            </section>
-            <section class="spotlight">
-                <div class="image"><img src="images/express.png" alt="express drycleaner image" /></div>
-                <div class="content">
-                    <h2>Express Cleaning</h2>
-                    <p>We offer same day wet and dry cleaning services for requests made before 9am, Request in the
-                        morning, enjoy your day and we drop it before 6pm </p>
-                    <ul class="actions special">
-                        <li><a href="#" class="button primary request-button">Request Now</a></li>
-                        <li><a href="tel:0789567701" class="button fit">call now</a></li>
-                    </ul>
-                </div>
-            </section>
-        </section>
-
-        <!-- Three -->
-        <section id="three" class="wrapper style3 special">
-            <div class="inner">
-                <header class="major">
-                    <h2>Some of our Happy clients</h2>
-                    <p>Lets have some positive reviews from some of our happy clients who have tried our services.</p>
-                </header>
-                <ul class="features">
-                    <li class="icon">
-                        <div class="review-image">
-                            <img src="images/cool-profile-pictures-retouching-1.jpg" alt="kent whisky">
-                        </div>
-                        <h3>Anitah</h3>
-                        <p>Always prompt, courteous and professional service!</p>
-                    </li>
-                    <li class="icon ">
-                        <div class="review-image">
-                            <img src="images/FB_IMG_16176107594111209.jpg" alt="kent whisky">
-                        </div>
-                        <h3>Kent</h3>
-                        <p>Have used the delivery and pick-up service for 2 years. It is the best. Easy, convenient and
-                            excellent service..</p>
-                    </li>
-                    <li class="icon">
-                        <div class="review-image">
-                            <img src="images/FB_IMG_16176105804758873.jpg" alt="Robert">
-                        </div>
-                        <h3>Robert</h3>
-                        <p>WOW WOW WOW.. Fast, friendly, and clean. Every single time. Love you guys.</p>
-                    </li>
-                    <li class="icon">
-                        <div class="review-image">
-                            <img src="images/FB_IMG_16176108649851841.jpg" alt="Nuhu">
-                        </div>
-                        <h3>Nuhu</h3>
-                        <p>Excellent Service.They dropped off shirts at my place, just to be nice</p>
-                    </li>
-
-
-                </ul>
-            </div>
-        </section>
-
-        <!-- CTA -->
-        <section id="cta" class="wrapper style4">
-            <div class="inner">
-                <header>
-                    <h2>request online Now</h2>
-                    <p>Once we receive your request, we going to reach you as soon as possible.</p>
-                </header>
-
-                <ul class="actions stacked">
-
-                    <li><a href="#" class="button fit primary request-button">Request Now</a></li>
-                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
-
-                </ul>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer id="footer">
-            <a id="contactus">
-                <ul class="icons">
-                    <li><a href="tel:0789567701" class="icon solid fa-phone"><span class="label">Phone</span></a></li>
-                    <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
-                    <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-                    <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
-                    <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
-                    <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
-                </ul>
-            </a>
-            <ul class="copyright">
-                <li>&copy;<span id="date"></span> Mobile wet and dry cleaners</li>
-                <li>All rights reserved</li>
+        {{#if errorsList}}
+        <div class="errors">
+            <p>Request Not Sent</p>
+            <ul>
+                {{#each errorsList}}
+                <li>{{this.msg}}</li>
+                {{/each}}
             </ul>
-        </footer>
+        </div>
+        {{/if}}
+        {{#if successMessage.success}}
+        <div class="success">
+            <p>Request Sent</p>
+        </div>
+        {{/if}}
+    </section>
+    <!-- Errors-->
+
+    <!-- Banner -->
+    <section id="banner">
+        <div class="inner">
+            <h2>CITY MOBILE DRY CLEANERS</h2>
+            <h3 style="text-shadow: 2px 7px 5px rgba(0,0,0,0.3), 
+							0px -4px 10px rgba(255,255,255,0.3)">A Mobile Wet and Dry cleaner In Town<br />
+                Lets Pick your Dirty Laundry From Where You Are<br />
+                And Drop It Clean ASAP <br><span><em>At a cheaper price</em></span></h3>
+            <ul class="actions special">
+                <li><a href="#" class="button primary request-button">Request Now</a></li>
+                <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+            </ul>
+        </div>
+        <a href="#one" class="more scrolly">Learn More</a>
+    </section>
+
+    <!-- One -->
+    <section id="one" class="wrapper style1 special">
+
+
+        <div class="inner">
+            <header class="major">
+                <h2>Step into the world of Mobile Wet and Dry cleaning</h2>
+                <p>We clean <strong>Every thing</strong> from <strong>Suits</strong> to <strong>Carpets</strong></p>
+                <p>
+                    We offer unique services to wide spectrum of businesses and customers<br>by providing excellent
+                    services that meet the specifications of our clients.
+                </p>
+                <ul class="actions special">
+                    <li><a href="#" class="button primary request-button">Request Now</a></li>
+                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+                </ul>
+                <h3>
+                    This is how it works
+                </h3>
+            </header>
+            <ul class="icons major">
+                <li><span class="icon fa-gem major style1"><span class="label">Lorem</span></span>
+                    <p>Request PickUp Online</p>
+                </li>
+                <li><span class="icon fa-heart major style2"><span class="label">Ipsum</span></span>
+                    <p>We Pick Up ASAP</p>
+                </li>
+                <li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span>
+                    <P>We Clean It</P>
+                </li>
+                <li><span class="icon solid fa-code major style3"><span class="label">Dolor</span></span>
+                    <P>We Drop Off</P>
+                </li>
+
+            </ul>
+
+
+        </div>
+        <section class="mt-5 after-how-it-works-button">
+            <ul class="actions special">
+                <li><a href="#" class="button primary request-button">Request Now</a></li>
+                <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+            </ul>
+        </section>
+    </section>
+
+    <!-- Two -->
+    <section id="two" class="wrapper alt style2" style="text-align: center;">
+        <section class="spotlight">
+            <div class="image"><img src="images/pic01.jpg" alt="" /></div>
+            <div class="content">
+                <h2>Wet Cleaning</h2>
+                <p>We geared to maintaining and enhancing your fabric in the best tradition,
+                    So all your laundry is washed, dried and neatly folded.
+                    You receive them fresh and clean..</p>
+                <ul class="actions special">
+                    <li><a href="#" class="button primary request-button">Request Now</a></li>
+                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+                </ul>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="images/pic02.jpg" alt="" /></div>
+            <div class="content">
+                <h2>Bulky Cleaning</h2>
+                <p>Request Online and we pick your bag of clothes, You will receive it clean at incredibly cheaper
+                    Rates</p>
+                <ul class="actions special">
+                    <li><a href="#" class="button primary request-button">Request Now</a></li>
+                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+                </ul>
+            </div>
+        </section>
+        <section class="spotlight">
+            <div class="image"><img src="images/express.png" alt="express drycleaner image" /></div>
+            <div class="content">
+                <h2>Express Cleaning</h2>
+                <p>We offer same day wet and dry cleaning services for requests made before 9am, Request in the
+                    morning, enjoy your day and we drop it before 6pm </p>
+                <ul class="actions special">
+                    <li><a href="#" class="button primary request-button">Request Now</a></li>
+                    <li><a href="tel:0789567701" class="button fit">call now</a></li>
+                </ul>
+            </div>
+        </section>
+    </section>
+
+    <!-- Three -->
+    <section id="three" class="wrapper style3 special">
+        <div class="inner">
+            <header class="major">
+                <h2>Some of our Happy clients</h2>
+                <p>Lets have some positive reviews from some of our happy clients who have tried our services.</p>
+            </header>
+            <ul class="features">
+                <li class="icon">
+                    <div class="review-image">
+                        <img src="images/cool-profile-pictures-retouching-1.jpg" alt="kent whisky">
+                    </div>
+                    <h3>Anitah</h3>
+                    <p>Always prompt, courteous and professional service!</p>
+                </li>
+                <li class="icon ">
+                    <div class="review-image">
+                        <img src="images/FB_IMG_16176107594111209.jpg" alt="kent whisky">
+                    </div>
+                    <h3>Kent</h3>
+                    <p>Have used the delivery and pick-up service for 2 years. It is the best. Easy, convenient and
+                        excellent service..</p>
+                </li>
+                <li class="icon">
+                    <div class="review-image">
+                        <img src="images/FB_IMG_16176105804758873.jpg" alt="Robert">
+                    </div>
+                    <h3>Robert</h3>
+                    <p>WOW WOW WOW.. Fast, friendly, and clean. Every single time. Love you guys.</p>
+                </li>
+                <li class="icon">
+                    <div class="review-image">
+                        <img src="images/FB_IMG_16176108649851841.jpg" alt="Nuhu">
+                    </div>
+                    <h3>Nuhu</h3>
+                    <p>Excellent Service.They dropped off shirts at my place, just to be nice</p>
+                </li>
+
+
+            </ul>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="cta" class="wrapper style4">
+        <div class="inner">
+            <header>
+                <h2>request online Now</h2>
+                <p>Once we receive your request, we going to reach you as soon as possible.</p>
+            </header>
+
+            <ul class="actions stacked">
+
+                <li><a href="#" class="button fit primary request-button">Request Now</a></li>
+                <li><a href="tel:0789567701" class="button fit">call now</a></li>
+
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <a id="contactus">
+            <ul class="icons">
+                <li><a href="tel:0789567701" class="icon solid fa-phone"><span class="label">Phone</span></a></li>
+                <li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+                <li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+                <li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+                <li><a href="#" class="icon brands fa-dribbble"><span class="label">Dribbble</span></a></li>
+                <li><a href="#" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+            </ul>
+        </a>
+        <ul class="copyright">
+            <li>&copy;<span id="date"></span> Mobile wet and dry cleaners</li>
+            <li>All rights reserved</li>
+        </ul>
+    </footer>
 
     </div>
     <!--request modal-->
