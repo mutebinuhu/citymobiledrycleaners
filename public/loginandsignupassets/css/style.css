@@ -780,5 +780,10 @@ label.valid:after {
     margin-bottom: 10px;
   }
 }
-
+//hide images on small screens
+@media screen and (max-width: 400px) {
+  figure {
+    display: none;
+  }
+}
 /*# sourceMappingURL=style.css.map */
