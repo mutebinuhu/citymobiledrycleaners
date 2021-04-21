@@ -11,6 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
 const requestRoute = require('./Routes/Requests');
+const authRoutes = require('./Routes/Auth')
 
 app.get('/demo', (req, res)=>{
     let demo = {
@@ -28,6 +29,8 @@ app.get('/demo', (req, res)=>{
 })
 
 app.use(requestRoute);
+app.use(authRoutes);
+
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("server started at port" + process.env.PORT);
 });
