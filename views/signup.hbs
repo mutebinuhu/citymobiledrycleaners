@@ -12,7 +12,7 @@
 
     <!-- Main css -->
     <link rel="stylesheet" href="./loginandsignupassets/css/style.css">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; connect-src 'self';font-src 'self'; img-src 'self' data: https:; style-src 'self' ; script-src 'self'">
+  
 </head>
 
 <body>
@@ -20,13 +20,22 @@
 
     </nav>
     <div class="main">
-
         <!-- Sign up form -->
         <section class="signup">
             <div class="container">
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
+                        {{#if errorsList}}
+                    <div>
+                     {{#each errorsList}}
+                       <p><strong>{{this.msg}}</strong></p>
+                     {{/each}}
+                   </div>
+                  {{/if}}
+                  {{#if confirmPasswordError}}
+                    <p>{{this.confirmPasswordError}}</p>
+                  {{/if}}
                         <form method="POST" class="register-form" id="register-form"  autocomplete="off" action="/signup">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>
@@ -58,19 +67,7 @@
                         {{/if}}
                     
                     </div>
-                    {{#if errorsList}}
-                    <div class="errors">
-                      <p>Request Not Sent</p>
-                    <ul>
-                     {{#each errorsList}}
-                       <li>{{this.msg}}</li>
-                     {{/each}}
-                    </ul>
-                   </div>
-                  {{/if}}
-                  {{#if confirmPasswordError}}
-                    <p>{{this.confirmPasswordError}}</p>
-                  {{/if}}
+                   
                     <div class="signup-image">
                         <figure><img src="./loginandsignupassets/images/signup-image.jpg" alt="sing up image"></figure>
                         <a href="/login" class="signup-image-link">I am already member</a>

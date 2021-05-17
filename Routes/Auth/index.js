@@ -33,8 +33,6 @@ body('password', 'Password is required').not().isEmpty()
                 let data = "User exists"
                 res.render('signup', {data})
             }
-           
-     
             user = new User({
                 name,
                 email,
