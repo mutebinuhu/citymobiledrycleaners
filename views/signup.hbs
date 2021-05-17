@@ -26,16 +26,17 @@
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
-                        {{#if errorsList}}
-                    <div>
-                     {{#each errorsList}}
-                       <p><strong>{{this.msg}}</strong></p>
-                     {{/each}}
-                   </div>
-                  {{/if}}
+                      
                   {{#if confirmPasswordError}}
                     <p>{{this.confirmPasswordError}}</p>
                   {{/if}}
+{{#if errorsList}}
+            <ul class="errors">
+                {{#each errorsList}}
+                <li>{{this.msg}}</li>
+                {{/each}}
+            </ul>
+        {{/if}}
                         <form method="POST" class="register-form" id="register-form"  autocomplete="off" action="/signup">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>

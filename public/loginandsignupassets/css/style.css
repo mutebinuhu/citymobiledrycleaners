@@ -790,4 +790,13 @@ label.valid:after {
     display: none;
   }
 }
+.errors {
+  list-style-type: none;
+}
+.errors > li {
+  background-color: #ed4933;
+  margin: 5px;
+  border-radius: 3px;
+}
+
 /*# sourceMappingURL=style.css.map */
