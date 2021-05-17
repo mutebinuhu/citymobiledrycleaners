@@ -1,4 +1,8 @@
 /* @extend display-flex; */
+body {
+  padding: 0;
+  margin: 0;
+}
 display-flex,
 .display-flex,
 .display-flex-center,
