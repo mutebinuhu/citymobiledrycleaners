@@ -38,11 +38,13 @@ async (req, res)=>{
         const salt = await bcrypt.genSalt(10);
         user.password = await bcrypt.hash(password, salt);
         await user.save();
+        //create jwt payload
         const payLoad = {
             user:{
                 id:user.id
             }
         }
+        //sign the payload
         jwt.sign(
             payLoad,
             config.get('jwtToken'),
@@ -56,7 +58,8 @@ async (req, res)=>{
 
 
     } catch (err) {
-       console.log(err.message) 
+       console.log(err.message)
+       res.send("serverc error")
     }
 });
 module.exports = Router;
