@@ -28,7 +28,8 @@ app.get('/demo', (req, res)=>{
 //.use(requestRoute);
 //app.use(authRoutes);
 //api
-app.use('/api/request', require('./Routes/api/request'))
+app.use('/api/request', require('./Routes/api/request'));
+app.use('/api/users/', require('./Routes/api/users'))
 
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("server started at port" + process.env.PORT);

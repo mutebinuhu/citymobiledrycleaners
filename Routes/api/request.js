@@ -3,6 +3,9 @@ const Router = express();
 const Request = require('../../Models/Request')
 const {body, validationResult} = require('express-validator')
 
+//method POST
+//description stores a new request
+//access private
 Router.post('/',[
     body('phone').not().isEmpty().withMessage('Phone number is required').isLength({
         min:7,
