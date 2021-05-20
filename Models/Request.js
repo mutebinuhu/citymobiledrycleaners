@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 const RequestSechema = new mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'users'
+
+    },
     phone:{
         type:String,
         required:true,

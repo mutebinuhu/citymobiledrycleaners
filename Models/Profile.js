@@ -4,8 +4,8 @@ const ProfileSechema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:user
     },
-    phone:{
-        type:Number
+    location:{
+        type: String
     }
-})
-module.exports = Profile = mongoose.model('profile', ProfileSechema)
+});
+module.exports = Profile = mongoose.model('profile', ProfileSechema);
