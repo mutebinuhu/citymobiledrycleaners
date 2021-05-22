@@ -11,14 +11,16 @@ const config = require('config');
 Router.post('/',[
 body('name', 'Name is required').not().isEmpty(),
 body('email', 'Email required with minimum of 6 characters').isEmail(),
-body('password', 'Password is required').not().isEmpty()],
+body('password', 'Password is required').not().isEmpty(),
+body('phone', 'Phone is required').not().isEmpty(),
+],
 async (req, res)=>{
     const errors = validationResult(req);
     if(!errors.isEmpty()){
         res.status(500).json({errors:errors.array()})
     }
     try {
-        const {email, name, password} = req.body;
+        const {email, name, password, phone} = req.body;
         let user = await User.findOne({email})
         if(user){
             res.status(500).json({errors:[{msg:"User exists"}]})
@@ -33,6 +35,7 @@ async (req, res)=>{
             name,
             email,
             password,
+            phone,
             avatar
         })
         const salt = await bcrypt.genSalt(10);
