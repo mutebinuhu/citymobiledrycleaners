@@ -53,25 +53,6 @@
     </nav>
     </header>
     <!-- Errors -->
-    <section>
-
-        {{#if errorsList}}
-        <div class="errors">
-            <p>Request Not Sent</p>
-            <ul>
-                {{#each errorsList}}
-                <li>{{this.msg}}</li>
-                {{/each}}
-            </ul>
-        </div>
-        {{/if}}
-        {{#if successMessage.success}}
-        <div class="success">
-            <p>Request Sent</p>
-        </div>
-        {{/if}}
-    </section>
-    <!-- Errors-->
 
     <!-- Banner -->
     <section id="banner">
