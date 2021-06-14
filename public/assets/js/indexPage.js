@@ -43,18 +43,5 @@ alert()
 
 //close the error alert messages
 
-try {
-    setTimeout(()=>{
-        let errorsDiv = document.querySelector('.errors');
-        errorsDiv.style.display = 'none'
-    },5000)
-} catch (error) {
-    console.error(error)
-}
 
-//close the success alert message
-setTimeout(()=>{
-    let successMessage = document.querySelector('.success');
-    successMessage.style.display = 'none'
-},5000)
 
