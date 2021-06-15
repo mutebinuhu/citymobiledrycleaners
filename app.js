@@ -11,6 +11,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
 const requestRoute = require('./Routes/api/request');
+const WelcomeRoute = require('./Routes/api/request');
+const customersRoute = require('./Routes/customers');
+
+app.use(WelcomeRoute)
+app.use(requestRoute)
+app.use(customersRoute)
+
+
 const authRoutes = require('./Routes/Auth');
 
 app.get('/demo', (req, res)=>{
@@ -32,9 +40,7 @@ app.get('/demo', (req, res)=>{
 //app.use('/api/users/', require('./Routes/api/users'));
 //app.use('/api/auth/', require('./Routes/api/auth'));
 
-app.get('/', (req, res)=>{
-    res.render('index')
-})
+
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("server started at port" + process.env.PORT);
 });

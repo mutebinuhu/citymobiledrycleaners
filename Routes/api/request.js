@@ -5,11 +5,13 @@ const User = require('../../Models/User');
 
 const {body, validationResult} = require('express-validator')
 const auth = require('../../middleware/auth')
-
+Router.get('/', (req, res)=>{
+    res.render('index')
+})
 //method POST
 //description stores a new request
 //access private
-Router.post('/',auth,
+Router.post('/',
  async (req, res)=>{
      let errors = validationResult(req);
    if (!errors.isEmpty()) {
