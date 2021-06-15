@@ -51,7 +51,6 @@ try {
 } catch (error) {
     console.error(error)
 }
-
 //close the success alert message
 setTimeout(()=>{
     let successMessage = document.querySelector('.success');

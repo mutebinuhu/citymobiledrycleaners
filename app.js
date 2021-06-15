@@ -11,12 +11,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
 const requestRoute = require('./Routes/api/request');
-const WelcomeRoute = require('./Routes/api/request');
-const customersRoute = require('./Routes/customers');
-
-app.use(WelcomeRoute)
-app.use(requestRoute)
-app.use(customersRoute)
+const HomeRoute = require('./Routes/Home');
+app.use(HomeRoute);
+app.use(requestRoute);
 
 
 const authRoutes = require('./Routes/Auth');

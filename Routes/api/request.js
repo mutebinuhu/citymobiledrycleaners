@@ -5,37 +5,11 @@ const User = require('../../Models/User');
 
 const {body, validationResult} = require('express-validator')
 const auth = require('../../middleware/auth')
-Router.get('/', (req, res)=>{
-    res.render('index')
-})
+
 //method POST
 //description stores a new request
 //access private
-Router.post('/',
- async (req, res)=>{
-     let errors = validationResult(req);
-   if (!errors.isEmpty()) {
-       let errorsList = errors.array();
-       console.log(errorsList);
-       res.status(400).json({errors:errorsList})
-   }
-   const {message} = req.body;
-   try {
-    const user = await User.findById(req.user.id).select('-password');
-    let request = new Request({
-        message,
-        name: user.name,
-        phone: user.phone,
-        user: req.user.id
-        
-    });
-   await request.save();
-   res.status(200).json(request)
-   } catch (err) {
-       console.log(err.message)
-   }
-  
-});
+
 
 //method GET
 //description Get all requests
