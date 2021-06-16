@@ -4,7 +4,7 @@ const Router = express();
 Router.get('/', (req, res)=>{
     res.render('index')
 });
-Router.post('/request',
+Router.post('/',
  async (req, res)=>{
      //let errors = validationResult(req);
    //if (!errors.isEmpty()) {
@@ -19,9 +19,7 @@ Router.post('/request',
         phone 
     });
    await request.save();
-   res.render('index', {
-       data: "saved"
-   });
+   res.render('index')
    } catch (err) {
        console.log(err.message)
    }

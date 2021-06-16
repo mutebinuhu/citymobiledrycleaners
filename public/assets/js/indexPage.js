@@ -1,3 +1,4 @@
+
 //date
 let date = new Date();
 document.getElementById('date').innerHTML = date.getFullYear();
@@ -55,5 +56,17 @@ try {
 setTimeout(()=>{
     let successMessage = document.querySelector('.success');
     successMessage.style.display = 'none'
-},5000)
+},5000);
 
+//get the users phone number and store in in the local storage on the request page
+let form = document.getElementById('Myform');
+if(!localStorage.getItem('phone')){
+    form.addEventListener('submit', ()=>{
+        let phone = form.elements['phone'];
+        localStorage.setItem('phone', phone.value)
+    })
+}else{
+     form.elements['phone'].placeholder = localStorage.getItem('phone')
+     form.elements['phone'].value = localStorage.getItem('phone')
+
+}
