@@ -20,11 +20,6 @@
     </noscript>
 
 </head>
-<style>
-    .aler>p {
-        color: red;
-    }
-</style>
 
 <body class="landing is-preload">
 
@@ -33,6 +28,12 @@
 
         <!-- Header -->
         <header id="header" class="alt">
+            <!-- show alert message if the request is sent-->
+            {{#if data}}
+                 <div class="success-message" style="height: 50px; width:100%; background-color:#28a745; text-align:center">
+                    Request successfully
+                </div>
+            {{/if}}
             <h1><a href="/">PIC</a></h1>
             <nav id="nav">
                 <ul>

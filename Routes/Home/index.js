@@ -19,7 +19,9 @@ Router.post('/',
         phone 
     });
    await request.save();
-   res.render('index')
+   res.render('index', {
+     data: true  
+   })
    } catch (err) {
        console.log(err.message)
    }

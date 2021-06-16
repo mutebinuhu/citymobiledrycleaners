@@ -54,7 +54,7 @@ try {
 }
 //close the success alert message
 setTimeout(()=>{
-    let successMessage = document.querySelector('.success');
+    let successMessage = document.querySelector('.success-message');
     successMessage.style.display = 'none'
 },5000);
 
