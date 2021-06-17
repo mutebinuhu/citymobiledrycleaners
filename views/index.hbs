@@ -34,6 +34,18 @@
                     Request Sent
                 </div>
             {{/if}}
+            {{#if errors}}
+           <div class="errors">
+
+               <ul>
+            {{#each errors}}
+
+                   <li >{{this.msg}}</li>
+            {{/each}}
+               </ul>
+           </div>
+            
+            {{/if}}
             <h1><a href="/">PIC</a></h1>
             <nav id="nav">
                 <ul>
@@ -254,7 +266,7 @@
                 <div class="container" style="background-color:rgba(43,52,61, 0.9)" onsubmit="getData()">
                     <form action="/" method="POST" id="Myform" onsubmit="getData()">
                         <label for="Phone number">Phone Number</label>
-                        <input type="text" name="phone"  placeholder="Phone Number"  required >
+                        <input type="text" name="phone"  placeholder="Phone Number">
                         <label for="message">Optional Message</label>
                         <textarea name="message" id="" cols="15" rows="5"></textarea>
                         <br>

@@ -4231,7 +4231,7 @@ label {
 }
 .errors > ul > li {
   background-color: #ed4933;
-  margin: 5px;
+  margin: 5px 0;
   border-radius: 3px;
   text-align: center;
 }
