@@ -13,6 +13,11 @@ const RequestSechema = new mongoose.Schema({
     message:{
         type: String
     },
+    status:{
+       type: Boolean,
+       default: 0
+    
+    },
     date:{
         type: Date,
         default: Date.now()
