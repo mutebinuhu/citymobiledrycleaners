@@ -4,7 +4,7 @@ const {body, validationResult} = require('express-validator')
 Router.get('/', (req, res)=>{
     res.render('index')
 });
-Router.post('/',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
+Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
      let errors = validationResult(req);
     if (!errors.isEmpty()) {
