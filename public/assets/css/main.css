@@ -4238,6 +4238,13 @@ label {
   background: #ed4933;
   height: 50px;
 }
+.errors > li {
+  background-color: #ed4933;
+  margin: 5px 0;
+  border-radius: 3px;
+  text-align: left;
+  color: white !important;
+}
 .success {
   text-align: center;
   height: 50px;
