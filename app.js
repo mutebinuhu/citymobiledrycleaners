@@ -12,8 +12,13 @@ app.use(express.static('public'));
 //routes
 const requestRoute = require('./Routes/api/request');
 const HomeRoute = require('./Routes/Home');
+const AuthRoute = require('./Routes/Auth');
+
+app.use(AuthRoute);
 app.use(HomeRoute);
 app.use(requestRoute);
+
+
 
 
 const authRoutes = require('./Routes/Auth');
