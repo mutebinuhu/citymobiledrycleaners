@@ -20,12 +20,24 @@
 
     </nav>
     <div class="main">
+       
         <!-- Sign up form -->
         <section class="signup">
             <div class="container">
+
                 <div class="signup-content">
                     <div class="signup-form">
                         <h2 class="form-title">Sign up</h2>
+                        <!--shows the errors mesage -->
+                         {{#if errorsList}}
+                             <ul class="errors">
+                                {{#each errorsList}}
+                                    <li>{{this.msg}}</li>
+                                {{/each}}
+                            </ul>
+                        {{/if}}
+                    <!--/shows the errors mesage -->
+
                         <form method="POST" class="register-form" id="register-form"  autocomplete="off" action="/signup">
                             <div class="form-group">
                                 <label for="name"><i class="zmdi zmdi-account material-icons-name"></i></label>

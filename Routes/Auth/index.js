@@ -20,7 +20,7 @@ body('name', 'Name is required').trim()
 .isLength({min: 3})
 .withMessage('Minimum 3 characters required!')
 .bail(),
-body('email', 'Email required with minimum of 6 characters').trim().normalizeEmail().not().isEmpty().withMessage('Invalid Email Address').bail(),
+body('email', 'Email required with minimum of 6 characters').trim().not().isEmpty().withMessage('Invalid Email Address').bail(),
 body('password', 'Password is required').not().isEmpty()
 , async (req, res)=>{
     let errors = validationResult(req);
@@ -28,7 +28,7 @@ body('password', 'Password is required').not().isEmpty()
 
     if(!errors.isEmpty()){
         let errorsList = errors.array()
-        return res.render('signup', {errorsList})
+        res.render('signup', {errorsList})
         console.log(errorsList)
     }
     if(confirm_password !== password){
