@@ -802,5 +802,14 @@ label.valid:after {
   color: #f8f8f8;
   padding: 5px;
 }
+.success-list > li {
+  background-color: #28a745;
+  margin: 5px;
+  border-radius: 3px;
+  list-style-type: none;
+  margin-left: -35px;
+  color: #f8f8f8;
+  padding: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */

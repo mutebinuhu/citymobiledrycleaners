@@ -32,14 +32,14 @@ body('password', 'Password is required').not().isEmpty()
         console.log(errorsList)
     }
     if(confirm_password !== password){
-        let confirmPasswordError = "Passwords Dont Match";
-        res.render('signup', {confirmPasswordError})
+        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}]})
+        console.log("passwords dont match")
     }else{
         try {
             let user = await User.findOne({email});
             if(user){
                 let userExistsError = "User exists"
-                res.render('signup', {userExistsError:true})
+                res.render('signup', {errorsList: [{"msg":"User already exists"}]})
             }
             user = new User({
                 name,
@@ -54,7 +54,7 @@ body('password', 'Password is required').not().isEmpty()
          } catch (error) {
             console.log(error.message) 
          }
-         res.render('signup')
+         res.render('signup', {success: "Account created"})
     }
     
 })

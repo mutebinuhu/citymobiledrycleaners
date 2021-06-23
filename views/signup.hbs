@@ -36,6 +36,11 @@
                                 {{/each}}
                             </ul>
                         {{/if}}
+                        {{#if success}}
+                            <ul class="success-list">
+                                <li>Account Created</li>
+                            </ul>
+                        {{/if}}
                     <!--/shows the errors mesage -->
 
                         <form method="POST" class="register-form" id="register-form"  autocomplete="off" action="/signup">
