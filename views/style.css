@@ -1,3 +1,11 @@
 p {
   color: #0a2838;
 }
+.errors-list > li {
+  background-color: #ed4933;
+  margin: 5px 0;
+  border-radius: 3px;
+  text-align: left;
+  color: white !important;
+  list-style-type: none;
+}

@@ -30,7 +30,7 @@
                         <h2 class="form-title">Sign up</h2>
                         <!--shows the errors mesage -->
                          {{#if errorsList}}
-                             <ul class="errors">
+                             <ul class="errors-list">
                                 {{#each errorsList}}
                                     <li>{{this.msg}}</li>
                                 {{/each}}
@@ -45,7 +45,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="phone"><i class="zmdi zmdi-phone material-icons-name"></i></label>
-                                <input type="text" name="phone" id="phone" placeholder="Your Phone" required />
+                                <input type="text" name="phone" id="phone" placeholder="Your Phone"  />
                             </div>
                             <div class="form-group">
                                 <label for="email"><i class="zmdi zmdi-email"></i></label>

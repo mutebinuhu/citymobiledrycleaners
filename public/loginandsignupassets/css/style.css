@@ -793,10 +793,14 @@ label.valid:after {
 .errors {
   list-style-type: none;
 }
-.errors > li {
+.errors-list > li {
   background-color: #ed4933;
   margin: 5px;
   border-radius: 3px;
+  list-style-type: none;
+  margin-left: -35px;
+  color: #f8f8f8;
+  padding: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */
