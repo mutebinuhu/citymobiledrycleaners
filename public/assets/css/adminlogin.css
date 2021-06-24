@@ -167,9 +167,14 @@ a:hover {
 }
 
 @media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 768px) {
   .container {
     padding: 10px !important;
     width: 300px;
+  }
+  .phone-button {
+    margin-top: -40px !important;
   }
 
   .card2 {
