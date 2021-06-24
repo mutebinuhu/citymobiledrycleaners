@@ -4231,6 +4231,7 @@ label {
   border-radius: 3px;
   text-align: left;
   color: white;
+  text-decoration: none;
 }
 .errors > p {
   text-align: center;
@@ -4247,3 +4248,4 @@ label {
 .success > p {
   padding-top: 15px;
 }
+/*admin login*/
