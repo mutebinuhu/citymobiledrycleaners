@@ -72,20 +72,20 @@ Router.get('/login', (req, res)=>{
     res.render('login')
 });
 Router.get('/admin', (req, res)=>{
-    res.render('admin')
+    res.render('login')
 })
 Router.post('/admin', async (req, res)=>{
     const {email, password} = req.body;
     try {
         let user = await User.findOne({email})
         if(!user){
-            res.render('admin', {error:"An error has occured"})
+            res.render('login', {error:"An error has occured"})
             
         }
         let isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch){
-            res.render('admin', {error:"An error has occured"})
+            res.render('login', {error:"An error has occured"})
           }else{
            const payLoad = {
                user:{
