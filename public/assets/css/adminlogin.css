@@ -169,6 +169,7 @@ a:hover {
 @media screen and (max-width: 768px) {
   .container {
     padding: 10px !important;
+    width: 300px;
   }
 
   .card2 {
@@ -179,4 +180,13 @@ a:hover {
     margin-top: 50px !important;
     margin-bottom: 50px !important;
   }
+}
+
+.errors > p {
+  text-align: center;
+  padding-top: 15px;
+  background: #ed4933;
+  height: 50px;
+  border-radius: 5px;
+  color: white;
 }

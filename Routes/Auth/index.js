@@ -3,7 +3,9 @@ const Router = express();
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const User = require('../../Models/User');
-const {body, validationResult} = require('express-validator')
+const {body, validationResult} = require('express-validator');
+const jwt = require('jsonwebtoken')
+const config = require("config")
 
 
 Router.get('/signup', async (req, res)=>{
@@ -76,13 +78,33 @@ Router.post('/admin', async (req, res)=>{
     const {email, password} = req.body;
     try {
         let user = await User.findOne({email})
-        const isMatch = bcrypt.compare(password, user.password)
-
-        if(user && isMatch){
-            res.send("welcome admin");
-
+        if(!user){
+            res.render('admin', {error:"An error has occured"})
+            
         }
-        res.send("error")
+        let isMatch = await bcrypt.compare(password, user.password);
+
+        if(!isMatch){
+            res.render('admin', {error:"An error has occured"})
+          }else{
+           const payLoad = {
+               user:{
+                   id:user.id
+               }
+           }
+           jwt.sign(
+            payLoad,
+            config.get('jwtToken'),
+            {expiresIn:36000},
+            (err, token)=>{
+                if (err) throw err;
+                res.send("Access granted")
+            }
+        )
+          }
+    //compare passwords
+
+    
     } catch (error) {
         console.error(error.message)
     }
