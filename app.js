@@ -1,10 +1,12 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const hbs = require('hbs');
 const dbConnection = require('./config/db/connection');
 dbConnection();
 const path = require('path')
 const app = express();
+app.use(cors());
 app.set('view engine', 'hbs');
 app.use(express.json({extended: false}));
 app.use(express.urlencoded({ extended: true }));

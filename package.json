@@ -7,15 +7,17 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon app",
     "start": "node app",
-    "client":"npm start --prefix client",
-    "devstart":"concurrently \"npm run server\" \"npm run client\""
+    "client": "npm start --prefix client",
+    "devstart": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "swaggp",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "bcryptjs": "^2.4.3",
     "concurrently": "^6.2.0",
     "config": "^3.3.6",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.0",
