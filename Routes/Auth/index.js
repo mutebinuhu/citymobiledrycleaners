@@ -98,7 +98,7 @@ Router.post('/admin', async (req, res)=>{
             {expiresIn:36000},
             (err, token)=>{
                 if (err) throw err;
-                res.send("Access granted")
+                res.render("dashboard")
             }
         )
           }
