@@ -1,16 +1,18 @@
 
 const BASE_URL = 'https://citymobilewetanddrycleaners.herokuapp.com/requests';
-const getTodoItems = async () => {
+const getRequests = async () => {
     try {
       const response = await axios.get(`${BASE_URL}`);
   
-      const todoItems = response.data;
+      const requests = response.data;
   
-      console.log(`GET: Here's the list of todos`, todoItems);
+      console.log(`GET: Here's the list of todos`, requests);
   
-      return todoItems;
+      return requests.map((i)=>{
+          console.log(i.message + "---" + i.phone)
+      });
     } catch (errors) {
       console.error(errors);
     }
   };
-getTodoItems();
+  getRequests();
