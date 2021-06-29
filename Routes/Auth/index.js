@@ -3,6 +3,8 @@ const Router = express();
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 const User = require('../../Models/User');
+const Request = require('../../Models/Request');
+
 const {body, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken')
 const config = require("config")
@@ -92,13 +94,15 @@ Router.post('/admin', async (req, res)=>{
                    id:user.id
                }
            }
+           const requests = await Request.find();
+
            jwt.sign(
             payLoad,
             config.get('jwtToken'),
             {expiresIn:36000},
             (err, token)=>{
                 if (err) throw err;
-                res.render("dashboard")
+                res.render("dashboard", {requests})
             }
         )
           }
