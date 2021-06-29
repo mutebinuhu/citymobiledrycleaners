@@ -1,20 +1,29 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
-const hbs = require('hbs');
+const app = express();
+//requiring express handlebars as a templating engine
+const exphbs = require('express-handlebars');
+//setting the main layout
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
 const dbConnection = require('./config/db/connection');
 dbConnection();
 const path = require('path')
-const app = express();
 const corsOptions = {
     origin: 'http://localhost:5000'
 }
 app.use(cors(corsOptions));
-app.set('view engine', 'hbs');
+//setting the app main layout 
+
+
 app.use(express.json({extended: false}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
+app.get("/yo", (req, res)=>{
+    res.render("testme")
+})
 const requestRoute = require('./Routes/api/request');
 const HomeRoute = require('./Routes/Home');
 const AuthRoute = require('./Routes/Auth');
@@ -38,7 +47,8 @@ app.get('/demo', (req, res)=>{
         skills : ['Data Mining', 'BlockChain Dev', 'node.js']
     }
     res.json({projects})
-})
+});
+
 
 //.use(requestRoute);
 //app.use(authRoutes);

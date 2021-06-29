@@ -46,7 +46,7 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
    await request.save();
    res.render('index', {
      data: true  
-   })
+   }, {layout:false})
    } catch (err) {
        console.log(err.message)
    }
