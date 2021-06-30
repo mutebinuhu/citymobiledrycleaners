@@ -1,7 +1,9 @@
 require('dotenv').config();
 const cors = require('cors');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
+app.use(cookieParser());
 //requiring express handlebars as a templating engine
 const exphbs = require('express-handlebars');
 //setting the main layout

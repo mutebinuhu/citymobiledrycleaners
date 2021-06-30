@@ -10,10 +10,7 @@ const jwt = require('jsonwebtoken')
 const config = require("config")
 
 
-Router.get('/signup', async (req, res)=>{
-    
-    res.render('signup', {layout: false})
-});
+
 Router.post('/signup',
 body('name', 'Name is required').trim()
 .escape()
@@ -43,7 +40,7 @@ body('phone', 'Name is required').trim()
         console.log(errorsList)
     }
     if(confirm_password !== password){
-        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}], layout: false}, {layout: falses})
+        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}], layout: false}, {layout: false})
         console.log("passwords dont match")
     }else{
         try {
@@ -61,7 +58,14 @@ body('phone', 'Name is required').trim()
             let salt = await bcrypt.genSalt(10)
             user.password =  await bcrypt.hash(password, salt)
             await user.save()
-     
+            const payLoad = {
+                user:{
+                    id:user.id
+                }
+            }
+    
+            res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+
          } catch (error) {
             console.log(error.message) 
          }
@@ -73,7 +77,7 @@ body('phone', 'Name is required').trim()
 Router.get('/login', (req, res)=>{
     res.render('login', {layout: false})
 });
-Router.get('/admin', (req, res)=>{
+/*Router.get('/admin', (req, res)=>{
     res.render('login', {layout: false})
 })
 Router.post('/admin', async (req, res)=>{
@@ -102,6 +106,7 @@ Router.post('/admin', async (req, res)=>{
             {expiresIn:36000},
             (err, token)=>{
                 if (err) throw err;
+                res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
                 res.render("dashboard", {requests, layout: false})
             }
         )
@@ -112,5 +117,80 @@ Router.post('/admin', async (req, res)=>{
     } catch (error) {
         console.error(error.message)
     }
+})
+*/
+Router.get('/register', (req, res)=>{
+    res.render('signup', {layout: false})
+
+});
+
+Router.post('/register',
+body('name', 'Name is required').trim()
+.escape()
+.not()
+.isEmpty()
+.withMessage('User name can not be empty!')
+.bail()
+.isLength({min: 3})
+.withMessage('Minimum 3 characters required!')
+.bail(),
+body('email', 'Email required with minimum of 6 characters').trim().not().isEmpty().withMessage('Invalid Email Address').bail(),
+body('password', 'Password is required').not().isEmpty(),
+body('phone', 'Name is required').trim()
+.escape()
+.not()
+.isEmpty()
+.withMessage('Phone can not be empty!')
+.bail()
+.isLength({min: 9})
+, async (req, res)=>{
+    let errors = validationResult(req);
+    const {name, email, phone,  password, confirm_password} = req.body;
+
+    if(!errors.isEmpty()){
+        let errorsList = errors.array()
+        res.render('signup', {errorsList, layout: false})
+        console.log(errorsList)
+    }
+    if(confirm_password !== password){
+        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}], layout: false})
+        console.log("passwords dont match")
+    }else{
+        try {
+            let user = await User.findOne({email});
+            if(user){
+                let userExistsError = "User exists"
+                res.render('signup', {errorsList: [{"msg":"User already exists"}], layout: false})
+            }
+            user = new User({
+                name,
+                email,
+                phone,
+                password
+            })
+            let salt = await bcrypt.genSalt(10)
+            user.password =  await bcrypt.hash(password, salt)
+            await user.save()
+            const payLoad = {
+                user:{
+                    id:user.id
+                }
+            }
+            
+            
+     
+            const token = jwt.sign(
+                payLoad,
+                config.get('jwtToken'),
+                {expiresIn:36000}
+            );
+            res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
+            res.send("logged in")
+
+         } catch (error) {
+            console.log(error.message) 
+         }
+    }
+    
 })
 module.exports = Router;
