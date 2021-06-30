@@ -12,7 +12,7 @@ const config = require("config")
 
 Router.get('/signup', async (req, res)=>{
     
-    res.render('signup')
+    res.render('signup', {layout: false})
 });
 Router.post('/signup',
 body('name', 'Name is required').trim()
@@ -39,18 +39,18 @@ body('phone', 'Name is required').trim()
 
     if(!errors.isEmpty()){
         let errorsList = errors.array()
-        res.render('signup', {errorsList})
+        res.render('signup', {errorsList, layout: false})
         console.log(errorsList)
     }
     if(confirm_password !== password){
-        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}]})
+        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}], layout: false}, {layout: falses})
         console.log("passwords dont match")
     }else{
         try {
             let user = await User.findOne({email});
             if(user){
                 let userExistsError = "User exists"
-                res.render('signup', {errorsList: [{"msg":"User already exists"}]})
+                res.render('signup', {errorsList: [{"msg":"User already exists"}]}, {layout: false})
             }
             user = new User({
                 name,
@@ -65,13 +65,13 @@ body('phone', 'Name is required').trim()
          } catch (error) {
             console.log(error.message) 
          }
-         res.render('signup', {success: "Account created"})
+         res.render('signup', {success: "Account created"}, {layout: false})
     }
     
 })
 
 Router.get('/login', (req, res)=>{
-    res.render('login')
+    res.render('login', {layout: false})
 });
 Router.get('/admin', (req, res)=>{
     res.render('login', {layout: false})
