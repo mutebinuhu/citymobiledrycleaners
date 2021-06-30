@@ -192,5 +192,10 @@ body('phone', 'Name is required').trim()
          }
     }
     
+});
+//logout
+Router.get('/logout', (req, res)=>{
+    res.clearCookie('pToken');
+    res.redirect('/')
 })
 module.exports = Router;
