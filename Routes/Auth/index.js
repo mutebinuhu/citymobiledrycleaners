@@ -74,27 +74,27 @@ Router.get('/login', (req, res)=>{
     res.render('login')
 });
 Router.get('/admin', (req, res)=>{
-    res.render('login')
+    res.render('login', {layout: false})
 })
 Router.post('/admin', async (req, res)=>{
     const {email, password} = req.body;
     try {
         let user = await User.findOne({email})
         if(!user){
-            res.render('login', {error:"An error has occured"})
+            res.render('login', {error:"An error has occured", layout: false})
             
         }
         let isMatch = await bcrypt.compare(password, user.password);
 
         if(!isMatch){
-            res.render('login', {error:"An error has occured"})
+            res.render('login', {error:"An error has occured", layout: false})
           }else{
            const payLoad = {
                user:{
                    id:user.id
                }
            }
-           const requests = await Request.find();
+           const requests = await Request.find().sort({date: "desc"}).limit(3).lean();
 
            jwt.sign(
             payLoad,
@@ -102,7 +102,7 @@ Router.post('/admin', async (req, res)=>{
             {expiresIn:36000},
             (err, token)=>{
                 if (err) throw err;
-                res.render("dashboard", {requests})
+                res.render("dashboard", {requests, layout: false})
             }
         )
           }

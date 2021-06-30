@@ -2,7 +2,7 @@ const express = require('express');
 const Router = express();
 const {body, validationResult} = require('express-validator')
 Router.get('/', (req, res)=>{
-    res.render('index')
+    res.render('index', {layout: false})
 });
 Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
@@ -21,7 +21,8 @@ Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(
     });
    await request.save();
    res.render('index', {
-     data: true  
+     data: true,
+     layout: false 
    })
    } catch (err) {
        console.log(err.message)
@@ -46,7 +47,7 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
    await request.save();
    res.render('index', {
      data: true  
-   }, {layout:false})
+   , layout:false})
    } catch (err) {
        console.log(err.message)
    }
