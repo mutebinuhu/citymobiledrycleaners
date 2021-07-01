@@ -74,9 +74,7 @@ body('phone', 'Name is required').trim()
     
 })
 
-Router.get('/login', (req, res)=>{
-    res.render('login', {layout: false})
-});
+
 /*Router.get('/admin', (req, res)=>{
     res.render('login', {layout: false})
 })
@@ -119,11 +117,17 @@ Router.post('/admin', async (req, res)=>{
     }
 })
 */
+//Access : public
+//used returns the login page for new users
+//method: Get
 Router.get('/register', (req, res)=>{
     res.render('signup', {layout: false})
 
 });
 
+//Access : public
+//stores new users
+//method: Post
 Router.post('/register',
 body('name', 'Name is required').trim()
 .escape()
@@ -177,8 +181,6 @@ body('phone', 'Name is required').trim()
                 }
             }
             
-            
-     
             const token = jwt.sign(
                 payLoad,
                 config.get('jwtToken'),
@@ -192,6 +194,41 @@ body('phone', 'Name is required').trim()
          }
     }
     
+});
+//login
+Router.get('/login', (req, res)=>{
+    res.render('login', {layout: false})
+});
+Router.post('/login', async (req, res)=>{
+    const {email, password} = req.body;
+    try {
+        let user = await User.findOne({email})
+        if(!user){
+            res.render('login', {error:"An error has occured", layout: false})
+            
+        }
+        let isMatch = await bcrypt.compare(password, user.password);
+
+        if(!isMatch){
+            res.render('login', {error:"An error has occured", layout: false})
+          }else{
+           const payLoad = {
+               user:{
+                   id:user.id
+               }
+           }
+           const requests = await Request.find().sort({date: "desc"}).limit(3).lean();
+           //set token
+           const token =  jwt.sign(payLoad,config.get('jwtToken'),{expiresIn: '60 days'})
+            // Set a cookie and redirect to root
+            res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
+            return res.redirect('/');
+          }
+
+    
+    } catch (error) {
+        console.error(error.message)
+    }
 });
 //logout
 Router.get('/logout', (req, res)=>{
