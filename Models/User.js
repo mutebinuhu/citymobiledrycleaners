@@ -24,8 +24,11 @@ const UserSchema = mongoose.Schema({
         default: Date.now()
     },
     roles:[
-        {type: mongoose.Schema.Types.ObjectId,
-        ref: "Role"
+        {
+            
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Role",
+        default: "normal"
     }
     ]
 })

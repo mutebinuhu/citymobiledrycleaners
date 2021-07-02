@@ -3,7 +3,10 @@ const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
+//middleware
+const checkAuth = require('./middleware/webCheckAuth')
 app.use(cookieParser());
+app.use(checkAuth)
 //requiring express handlebars as a templating engine
 const exphbs = require('express-handlebars');
 //setting the main layout
@@ -23,9 +26,7 @@ app.use(express.json({extended: false}));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 //routes
-app.get("/yo", (req, res)=>{
-    res.render("testme")
-})
+
 const requestRoute = require('./Routes/api/request');
 const HomeRoute = require('./Routes/Home');
 const AuthRoute = require('./Routes/Auth');

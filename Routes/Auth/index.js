@@ -222,7 +222,13 @@ Router.post('/login', async (req, res)=>{
            const token =  jwt.sign(payLoad,config.get('jwtToken'),{expiresIn: '60 days'})
             // Set a cookie and redirect to root
             res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
-            return res.redirect('/');
+            if(user.roles[0] =='Admin'){
+                res.send("Admin")
+
+            }else{
+                res.send("normal user")
+
+            }
           }
 
     
