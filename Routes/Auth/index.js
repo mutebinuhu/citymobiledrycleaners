@@ -9,72 +9,6 @@ const {body, validationResult} = require('express-validator');
 const jwt = require('jsonwebtoken')
 const config = require("config")
 
-
-
-Router.post('/signup',
-body('name', 'Name is required').trim()
-.escape()
-.not()
-.isEmpty()
-.withMessage('User name can not be empty!')
-.bail()
-.isLength({min: 3})
-.withMessage('Minimum 3 characters required!')
-.bail(),
-body('email', 'Email required with minimum of 6 characters').trim().not().isEmpty().withMessage('Invalid Email Address').bail(),
-body('password', 'Password is required').not().isEmpty(),
-body('phone', 'Name is required').trim()
-.escape()
-.not()
-.isEmpty()
-.withMessage('Phone can not be empty!')
-.bail()
-.isLength({min: 9})
-, async (req, res)=>{
-    let errors = validationResult(req);
-    const {name, email, phone,  password, confirm_password} = req.body;
-
-    if(!errors.isEmpty()){
-        let errorsList = errors.array()
-        res.render('signup', {errorsList, layout: false})
-        console.log(errorsList)
-    }
-    if(confirm_password !== password){
-        res.render('signup', {errorsList:[{"msg":"Passwords dont match"}], layout: false}, {layout: false})
-        console.log("passwords dont match")
-    }else{
-        try {
-            let user = await User.findOne({email});
-            if(user){
-                let userExistsError = "User exists"
-                res.render('signup', {errorsList: [{"msg":"User already exists"}]}, {layout: false})
-            }
-            user = new User({
-                name,
-                email,
-                phone,
-                password
-            })
-            let salt = await bcrypt.genSalt(10)
-            user.password =  await bcrypt.hash(password, salt)
-            await user.save()
-            const payLoad = {
-                user:{
-                    id:user.id
-                }
-            }
-    
-            res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-
-         } catch (error) {
-            console.log(error.message) 
-         }
-         res.render('signup', {success: "Account created"}, {layout: false})
-    }
-    
-})
-
-
 /*Router.get('/admin', (req, res)=>{
     res.render('login', {layout: false})
 })
@@ -201,6 +135,7 @@ Router.get('/login', (req, res)=>{
 });
 Router.post('/login', async (req, res)=>{
     const {email, password} = req.body;
+    const currentUser = req.cookies.pToken;
     try {
         let user = await User.findOne({email})
         if(!user){
@@ -222,13 +157,7 @@ Router.post('/login', async (req, res)=>{
            const token =  jwt.sign(payLoad,config.get('jwtToken'),{expiresIn: '60 days'})
             // Set a cookie and redirect to root
             res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
-            if(user.roles[0] =='Admin'){
-                res.send("Admin")
-
-            }else{
-                res.send("normal user")
-
-            }
+           res.render('home', {currentUser})
           }
 
     
@@ -240,5 +169,9 @@ Router.post('/login', async (req, res)=>{
 Router.get('/logout', (req, res)=>{
     res.clearCookie('pToken');
     res.redirect('/')
+})
+Router.get('/myHome', (req, res)=>{
+    const currentUser = req.user
+    res.render('home', {currentUser})
 })
 module.exports = Router;
