@@ -2,6 +2,7 @@ const express = require('express');
 const Router = express();
 const {body, validationResult} = require('express-validator');
 const auth = require('../../middleware/webCheckAuth')
+
 Router.get('/', (req, res)=>{
     res.render('index', {layout: false});
 });
@@ -54,7 +55,15 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
    } catch (err) {
        console.log(err.message)
    }
-  
+
+});
+
+Router.get('/home', async (req, res)=>{
+    const currentUser = req.cookies.pToken;
+
+    const requests = await Request.find().sort({date: "desc"}).lean();
+
+    res.render('home', {requests})
 });
 
 module.exports = Router;

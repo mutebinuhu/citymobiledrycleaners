@@ -152,12 +152,11 @@ Router.post('/login', async (req, res)=>{
                    id:user.id
                }
            }
-           const requests = await Request.find().sort({date: "desc"}).lean();
            //set token
            const token =  jwt.sign(payLoad,config.get('jwtToken'),{expiresIn: '60 days'})
             // Set a cookie and redirect to root
             res.cookie('pToken', token, { maxAge: 900000, httpOnly: true });
-           res.render('home', {currentUser, requests})
+           res.redirect('/home')
           }
 
     
