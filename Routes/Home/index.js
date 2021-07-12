@@ -4,7 +4,9 @@ const {body, validationResult} = require('express-validator');
 const auth = require('../../middleware/webCheckAuth')
 
 Router.get('/', (req, res)=>{
-    res.render('index', {layout: false});
+    let currentUser = req.user;
+    console.log(currentUser)
+    res.render('index', {layout: false, currentUser});
 });
 Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
@@ -30,7 +32,6 @@ Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isE
    } catch (err) {
        console.log(err.message)
    }
-  
 });
 Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
@@ -59,11 +60,15 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
 });
 
 Router.get('/home', async (req, res)=>{
-    const currentUser = req.cookies.pToken;
+    const currentUser = req.user;
 
     const requests = await Request.find().sort({date: "desc"}).lean();
 
+   if(req.user){
     res.render('home', {requests})
+   }else{
+       res.render('index', {layout: false})
+   }
 });
 
 module.exports = Router;
