@@ -62,7 +62,7 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
 Router.get('/home', async (req, res)=>{
     const currentUser = req.user;
 
-    const requests = await Request.find().sort({date : 'desc'}).lean();
+    const requests = await Request.find().sort({date : 'desc'}).lean().limit(5);
 
    if(req.user){
     res.render('home', {requests})
