@@ -62,7 +62,7 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
 Router.get('/home', async (req, res)=>{
     const currentUser = req.user;
 
-    const requests = await Request.find().sort({date: "desc"}).lean();
+    const requests = await Request.find().lean();
 
    if(req.user){
     res.render('home', {requests})
@@ -70,5 +70,6 @@ Router.get('/home', async (req, res)=>{
        res.render('index', {layout: false})
    }
 });
+
 
 module.exports = Router;

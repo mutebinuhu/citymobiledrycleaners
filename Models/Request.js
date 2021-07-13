@@ -26,7 +26,7 @@ const RequestSechema = new mongoose.Schema({
     ],
     date:{
         type: Date,
-        default: Date.now()
+        default: Date
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)
