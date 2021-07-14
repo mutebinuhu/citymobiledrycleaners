@@ -8,7 +8,7 @@ Router.get('/', (req, res)=>{
     console.log(currentUser)
     res.render('index', {layout: false, currentUser});
 });
-Router.post('/',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
+Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
      let errors = validationResult(req);
     if (!errors.isEmpty()) {
