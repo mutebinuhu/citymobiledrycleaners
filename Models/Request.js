@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+var moment = require('moment-timezone');
+moment().tz("America/Los_Angeles").format();
 
 const RequestSechema = new mongoose.Schema({
     user:{
@@ -27,7 +29,7 @@ const RequestSechema = new mongoose.Schema({
     ],
     date:{
         type: Date,
-        default: Date
+        default: moment
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)
