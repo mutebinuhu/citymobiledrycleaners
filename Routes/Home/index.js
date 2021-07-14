@@ -8,7 +8,7 @@ Router.get('/', (req, res)=>{
     console.log(currentUser)
     res.render('index', {layout: false, currentUser});
 });
-Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
+Router.post('/',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
      let errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -63,9 +63,10 @@ Router.get('/home', async (req, res)=>{
     const currentUser = req.user;
 
     const requests = await Request.find().sort({date : 'desc'}).lean().limit(5);
+    const totalRequests = await Request.countDocuments();
 
    if(req.user){
-    res.render('home', {requests})
+    res.render('home', {requests, totalRequests})
    }else{
        res.render('index', {layout: false})
    }
