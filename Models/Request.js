@@ -28,8 +28,7 @@ const RequestSechema = new mongoose.Schema({
         }
     ],
     date:{
-        type: Date,
-        default: Date
+        type: Date
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)

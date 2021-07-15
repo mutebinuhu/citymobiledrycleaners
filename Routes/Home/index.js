@@ -18,11 +18,13 @@ Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isE
            layout: false
        })
    }
-   const {message, phone} = req.body;
+   const {message, phone, date} = req.body;
+
    try {
     let request = new Request({
         message,
-        phone 
+        phone,
+        date
     });
    await request.save();
    res.render('index', {
@@ -43,11 +45,12 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
            layout: false
        })
    }
-   const {message, phone} = req.body;
+   const {message, phone, date} = req.body;
    try {
     let request = new Request({
         message,
-        phone 
+        phone,
+        date
     });
    await request.save();
    res.render('index', {
