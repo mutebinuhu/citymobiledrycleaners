@@ -29,7 +29,7 @@ const RequestSechema = new mongoose.Schema({
     ],
     date:{
         type: Date,
-        default: moment
+        default: Date
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)
