@@ -60,7 +60,15 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
    }
 
 });
-
+//show one request
+Router.get('/requests/:id', async (req, res)=>{
+   try{
+    const request = await Request.findById(req.params.id).lean()
+    res.render('requests/show', {request})
+   } catch (err) {
+console.log(err.message)
+   }
+})
 Router.get('/home', async (req, res)=>{
     const currentUser = req.user;
 
