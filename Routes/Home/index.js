@@ -1,7 +1,9 @@
 const express = require('express');
 const Router = express();
 const {body, validationResult} = require('express-validator');
-const auth = require('../../middleware/webCheckAuth')
+const auth = require('../../middleware/webCheckAuth');
+const counter = require('../../middleware/statisticsCounter');
+
 
 Router.get('/', (req, res)=>{
     let currentUser = req.user;
@@ -10,6 +12,7 @@ Router.get('/', (req, res)=>{
 });
 Router.post('/request',auth,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
+     const userId = req.user
      let errors = validationResult(req);
     if (!errors.isEmpty()) {
        let errorsList = errors.array();
@@ -35,7 +38,7 @@ console.log('date-----' + date);
        console.log(err.message)
    }
 });
-Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
+Router.get('/request', counter,[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
      let errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -61,19 +64,33 @@ Router.get('/request',[body('phone', 'Phone Number is Required').not().isEmpty()
 
 });
 //show one request
-Router.get('/requests/:id', async (req, res)=>{
+Router.get('/requests/:id',counter, async (req, res)=>{
    try{
-    const request = await Request.findById(req.params.id).lean()
-    res.render('requests/show', {request})
+    const request = await Request.findById(req.params.id).lean();
+    const totalRequests = req.totalRequests;
+
+    res.render('requests/show', {request, totalRequests})
    } catch (err) {
 console.log(err.message)
    }
+});
+//Approve request
+Router.post('/request/approve', async(req, res)=>{
+    try{
+        const reqId = req.body.requestid;
+        const {requestStatus} = req.body;
+        const newStatus = {requestStatus}
+        const request = await Request.findById(reqId);
+        request.status.unshift(newStatus);
+        await request.save()
+    }catch(err){
+        console.log(err.message)
+    }
 })
-Router.get('/home', async (req, res)=>{
+Router.get('/home',counter, async(req, res)=>{
     const currentUser = req.user;
-
+    const totalRequests = req.totalRequests;
     const requests = await Request.find().sort({date : 'desc'}).lean();
-    const totalRequests = await Request.countDocuments();
 
    if(req.user){
     res.render('home', {requests, totalRequests})
@@ -81,6 +98,7 @@ Router.get('/home', async (req, res)=>{
        res.render('index', {layout: false})
    }
 });
+
 
 
 module.exports = Router;
