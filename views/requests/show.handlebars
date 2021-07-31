@@ -44,7 +44,8 @@
               <div class="text-center mt-5 mb-3">
                 <form action="/request/approve" method="POST" style="display: inline; ">
                     <input type="hidden" name="requestid" value={{request._id}}>
-                    <input type="hidden" name="requestStatus" value="approved">
+                    <input type="hidden" name="requestStatus" value="Approved">
+                    <input type="hidden" name="date" >
                     <button  class="btn btn-sm btn-primary" type="submit">Approve Request</button>
                 </form>
                 <a href="#" class="btn btn-sm btn-warning">Report contact</a>
@@ -58,3 +59,5 @@
 
     </section>
 </div>
+<script src="assets/js/indexPage.js"></script>
+  

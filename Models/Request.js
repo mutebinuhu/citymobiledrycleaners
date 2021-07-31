@@ -22,8 +22,7 @@ const RequestSechema = new mongoose.Schema({
                 type: String
             },
             requestDateStatus:{
-                type: Date,
-                default: Date.now()
+                type: String
             },
         }
     ],

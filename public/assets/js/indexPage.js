@@ -70,6 +70,8 @@ if(!localStorage.getItem('phone')){
      form.elements['phone'].value = localStorage.getItem('phone')
 
 }
+//set request date
 const setDate = new Date()
 form.elements['date'].value = setDate;
+
 
