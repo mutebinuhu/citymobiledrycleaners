@@ -36,9 +36,7 @@
                           <td><a href="requests/{{this._id}}" target="_blank">REQ {{@index}}</a></td>
                           <td>0{{this.phone}}</td>
                           <td><span class="badge badge-success">
-                            {{#each status}}
-                              {{this.[0]}}
-                            {{/each}}
+                           {{this.status.[0].requestStatus}}
                           </span></td>
                           <td>{{this.message}}</td>
                           <td>{{this.date}}</td>
@@ -51,7 +49,7 @@
                     </tbody>
                   </table>
                 </div>
-                <!-- /.table-responsive -->
+                <!-- /.table-responsive  -->
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">

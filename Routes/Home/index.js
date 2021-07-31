@@ -86,7 +86,8 @@ Router.post('/request/approve', async(req, res)=>{
         const newStatus = {requestStatus}
         const request = await Request.findById(reqId);
         request.status.unshift(newStatus);
-        await request.save()
+        await request.save();
+        res.redirect("/home")
     }catch(err){
         console.log(err.message)
     }
