@@ -1,3 +1,4 @@
+window.addEventListener("DOMContentLoaded", ()=>{
 
 const BASE_URL = 'https://citymobilewetanddrycleaners.herokuapp.com/requests';
 const getRequests = async () => {
@@ -16,3 +17,13 @@ const getRequests = async () => {
     }
   };
   getRequests();
+
+  //get the request status and render the approved button conditionally
+  const getTheStatus = document.querySelector('.requestStatusShowPage').value;
+  if (getTheStatus === 'Approved') {
+    const getButtonText = document.querySelector('.approveButton');
+    getButtonText.innerText = 'Approved';
+    getButtonText.disabled = true;
+
+  }
+})

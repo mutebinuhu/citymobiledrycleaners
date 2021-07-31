@@ -1,1 +1,3 @@
-console.log("hello guys  this is the app file")
+window.addEventListener("DOMContentLoaded", ()=>{
+	console.log("content loaded")
+})

@@ -46,7 +46,8 @@
                     <input type="hidden" name="requestid" value={{request._id}}>
                     <input type="hidden" name="requestStatus" value="Approved">
                     <input type="hidden" name="date" >
-                    <button  class="btn btn-sm btn-primary" type="submit">Approve Request</button>
+                    <input type="hidden" class="requestStatusShowPage" value="{{request.status.[0].requestStatus}}">
+                    <button  class="btn btn-sm btn-primary approveButton" type="submit">Approve Request</button>
                 </form>
                 <a href="#" class="btn btn-sm btn-warning">Report contact</a>
               </div>
@@ -60,4 +61,5 @@
     </section>
 </div>
 <script src="assets/js/indexPage.js"></script>
+
   
