@@ -130,7 +130,7 @@ body('phone', 'Name is required').trim()
     
 });
 //login
-Router.get('/login', (req, res)=>{
+Router.get('/loginplease', (req, res)=>{
     res.render('login', {layout: false})
 });
 Router.post('/login', async (req, res)=>{
