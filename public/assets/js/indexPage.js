@@ -74,3 +74,12 @@ if(!localStorage.getItem('phone')){
 const setDate = new Date()
 form.elements['date'].value = setDate;
 
+/* this algorithm was made to store the date in seconds
+so it can be used to query the documents orderBy seconds because
+it gave wrong results by the saved date
+*/
+let getDateToSecondsElement = document.querySelector('.dateInSeconds');
+let changeToSeconds = setDate.getTime() / 1000;
+let dateToSeconds = getDateToSecondsElement.value=changeToSeconds;
+
+ 

@@ -28,6 +28,13 @@ const RequestSechema = new mongoose.Schema({
     ],
     date:{
         type: String
+    },
+    /*i added this to change
+     dates into seconds so
+      i can get actual values when returning requests order by date
+      */
+    dateInSeconds:{
+        type: Number
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)

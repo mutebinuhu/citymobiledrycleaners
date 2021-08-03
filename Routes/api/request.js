@@ -14,7 +14,7 @@ const auth = require('../../middleware/auth')
 //method GET
 //description Get all requests
 //access private
-Router.get('/requests', async (req, res)=>{
+Router.get('/requests', auth, async (req, res)=>{
     try {
         let requests = await Request.find();
         res.status(200).json(requests)

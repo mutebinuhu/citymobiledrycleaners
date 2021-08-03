@@ -10,7 +10,7 @@ Router.get('/', (req, res)=>{
     console.log(currentUser)
     res.render('index', {layout: false, currentUser});
 });
-Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
+Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(), body('dateInSeconds', 'dateInSeconds is Required').not().isEmpty(), body('phone', 'Phone number should not be less than 10').isLength({min: 10}).trim().escape()],
  async (req, res)=>{
      const userId = req.user
      let errors = validationResult(req);
@@ -21,12 +21,13 @@ Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(
            layout: false
        })
    }
-   const {message, phone, date, status} = req.body;
+   const {message, phone, date, status, dateInSeconds} = req.body;
    try {
     let request = new Request({
         message,
         phone,
-        date
+        date,
+        dateInSeconds
     });
     request.status.unshift({
         requestDateStatus: date,
@@ -52,11 +53,13 @@ Router.get('/request', counter,[body('phone', 'Phone Number is Required').not().
            layout: false
        })
    }
-   const {message, phone} = req.body;
+   const {message, phone,date,dateInSeconds} = req.body;
    try {
     let request = new Request({
         message,
-        phone
+        phone,
+        date,
+        dateInSeconds
     });
    await request.save();
    res.render('index', {
@@ -93,14 +96,36 @@ Router.post('/request/approve', async(req, res)=>{
     }
 })
 Router.get('/home',counter, async(req, res)=>{
-    const currentUser = req.user;
+   try{
+     const currentUser = req.user;
     const totalRequests = req.totalRequests;
-    const requests = await Request.find().sort({date : 'desc'}).lean();
+    const requests = await Request.find().sort({dateInSeconds : 'desc'}).lean();
+    console.log("why undefined", requests[0]._id)
+    let list;
+    let getDate;
+    let theDate;
+    let dateToSeconds;
 
+
+    //looping through the list and getting the date
+    /*requests.forEach((request)=>{
+        //turn the date into an array
+        let list = request.date.split(" ");
+        //select a few data from the date string
+        let getDate = `${list[0]} ${list[1]} ${list[2]} ${list[3]} ${list[4]}`;
+        let theDate = new Date(getDate);
+        //turn the selected data into into seconds
+        let dateToSeconds = theDate.getTime() / 1000;
+        console.log(dateToSeconds + "--" + getDate)
+    });
+    */
    if(req.user){
     res.render('home', {requests, totalRequests})
    }else{
        res.render('index', {layout: false})
+   }
+   }catch(err){
+    console.log(err.message)
    }
 });
 
