@@ -50,6 +50,18 @@
                     <button  class="btn btn-sm btn-primary approveButton" type="submit">Approve Request</button>
                 </form>
                 <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                   <form action="/request/assign" class="mt-5" method="POST">
+                    <div>
+                      <label for="name">Assign To</label>
+                    </div>
+                    <div>
+                      <textarea name="assignedto" id=""></textarea>
+                      <input type="hidden" name="requestid" value="{{request._id}}">
+                    </div>
+                    <div>
+                      <button class="btn btn-info">Submit</button>
+                    </div>
+                    </form>
               </div>
             </div>
           </div>

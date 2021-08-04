@@ -35,6 +35,9 @@ const RequestSechema = new mongoose.Schema({
       */
     dateInSeconds:{
         type: Number
+    },
+    assignedTo:{
+        type: String
     }
 });
 module.exports = Request = mongoose.model('request', RequestSechema)

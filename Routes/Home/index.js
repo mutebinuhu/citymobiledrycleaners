@@ -71,7 +71,7 @@ Router.get('/request', counter,[body('phone', 'Phone Number is Required').not().
 
 });
 //show one request
-Router.get('/requests/:id',counter, async (req, res)=>{
+Router.get('/requests/:id',counter,auth, async (req, res)=>{
    try{
     const request = await Request.findById(req.params.id).lean();
     const totalRequests = req.totalRequests;
@@ -82,7 +82,7 @@ console.log(err.message)
    }
 });
 //Approve request
-Router.post('/request/approve', async(req, res)=>{
+Router.post('/request/approve',auth, async(req, res)=>{
     try{
         const reqId = req.body.requestid;
         const {requestStatus, date} = req.body;
@@ -90,7 +90,27 @@ Router.post('/request/approve', async(req, res)=>{
         const request = await Request.findById(reqId);
         request.status.unshift(newStatus);
         await request.save();
-        res.redirect("/home")
+        res.redirect(`/requests/${reqId}`);
+    }catch(err){
+        console.log(err.message)
+    }
+});
+//Assign request
+Router.post('/request/assign', auth, body('assignedto', 'Assigned To name is required').not().isEmpty(), async(req, res)=>{
+
+    try{
+         let errors = validationResult(req);
+        if(!errors.isEmpty()){
+        let arraysList = errors.array();
+        res.json({arraysList}).status('400')
+        }
+        let {assignedto, requestid} = req.body;
+        let getRequest = await Request.findById(requestid);
+        getRequest.assignedTo = assignedto;
+        await getRequest.save()
+        console.log(req.body)
+
+
     }catch(err){
         console.log(err.message)
     }
