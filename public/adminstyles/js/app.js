@@ -22,8 +22,19 @@ const getRequests = async () => {
   const getTheStatus = document.querySelector('.requestStatusShowPage').value;
   if (getTheStatus === 'Approved') {
     const getButtonText = document.querySelector('.approveButton');
+      //get the form class and render it conditionally
+    const assignForm = document.querySelector('.assign-form');
+    console.log('assign form', assignForm)
     getButtonText.innerText = 'Approved';
     getButtonText.disabled = true;
+    //get the assigned-to name from the show request page
+    //if it exists the assignRequest form is hidden from the view
+    let assign = document.querySelector('.assigned').innerText;
+    if (assign) {
+      assignForm.style.display="none"
+    }else{
+      assignForm.style.display="block";
+    }
 
   }
 })

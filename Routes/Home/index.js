@@ -107,9 +107,8 @@ Router.post('/request/assign', auth, body('assignedto', 'Assigned To name is req
         let {assignedto, requestid} = req.body;
         let getRequest = await Request.findById(requestid);
         getRequest.assignedTo = assignedto;
-        await getRequest.save()
-        console.log(req.body)
-
+        await getRequest.save();
+        res.redirect(`/requests/${requestid}`);
 
     }catch(err){
         console.log(err.message)

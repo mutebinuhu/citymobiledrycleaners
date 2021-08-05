@@ -21,6 +21,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>About request {{request._id}}</h4>
+                  <p>Assigned To : <span class="assigned">{{request.assignedTo}}</span></p>
                   
 
                     <div class="post clearfix">
@@ -50,7 +51,7 @@
                     <button  class="btn btn-sm btn-primary approveButton" type="submit">Approve Request</button>
                 </form>
                 <a href="#" class="btn btn-sm btn-warning">Report contact</a>
-                   <form action="/request/assign" class="mt-5" method="POST">
+                   <form action="/request/assign" class="mt-5 assign-form" method="POST" style="display: none;">
                     <div>
                       <label for="name">Assign To</label>
                     </div>
