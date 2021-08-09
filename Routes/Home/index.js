@@ -21,8 +21,9 @@ Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(
            layout: false
        })
    }
-   const {message, phone, date, status, dateInSeconds} = req.body;
-   console.log("nodejs date---", date)
+   const {message, phone, status, dateInSeconds} = req.body;
+      //get current date
+   let date = new Date();
    try {
     let request = new Request({
         message,
@@ -54,7 +55,10 @@ Router.get('/request', counter,[body('phone', 'Phone Number is Required').not().
            layout: false
        })
    }
-   const {message, phone,date,dateInSeconds} = req.body;
+   const {message, phone,dateInSeconds} = req.body;
+   //get current date
+   let date = new Date();
+   console.log("the current date is", date);
    try {
     let request = new Request({
         message,
