@@ -21,9 +21,10 @@ Router.post('/request',[body('phone', 'Phone Number is Required').not().isEmpty(
            layout: false
        })
    }
-   const {message, phone, status, dateInSeconds} = req.body;
+   const {message, phone, status} = req.body;
       //get current date
    let date = new Date();
+   let dateInSeconds = date.getTime() / 1000;
    try {
     let request = new Request({
         message,
@@ -55,9 +56,11 @@ Router.get('/request', counter,[body('phone', 'Phone Number is Required').not().
            layout: false
        })
    }
-   const {message, phone,dateInSeconds} = req.body;
+   const {message, phone,status} = req.body;
    //get current date
    let date = new Date();
+   //change it to seconds
+   let dateInSeconds = date.getTime() / 1000;
    console.log("the current date is", date);
    try {
     let request = new Request({
@@ -129,8 +132,6 @@ Router.get('/home',counter, async(req, res)=>{
     let getDate;
     let theDate;
     let dateToSeconds;
-
-
     //looping through the list and getting the date
     /*requests.forEach((request)=>{
         //turn the date into an array
