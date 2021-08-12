@@ -83,7 +83,7 @@ Router.get('/requests/:id',counter,auth, async (req, res)=>{
    try{
     const request = await Request.findById(req.params.id).lean();
     const totalRequests = req.totalRequests;
-
+    let test = "";
     res.render('requests/show', {request, totalRequests})
    } catch (err) {
 console.log(err.message)
